@@ -1,0 +1,2 @@
+module RoomStatsHelper
+end
