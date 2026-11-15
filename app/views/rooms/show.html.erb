@@ -1,2 +1,22 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<%= turbo_stream_from @room %>
+
+<main class="chat-layout">
+  <section class="chat-main">
+    <h1><%= @room.name %></h1>
+    <p>Chat with another browser, or try <code>@bot help</code>.</p>
+
+    <div id="messages" class="chat-messages" data-controller="chat-scroll">
+      <% @messages.each do |message| %>
+        <%= render "messages/message", message: message %>
+      <% end %>
+    </div>
+
+    <%= render "messages/form", room: @room, message: @message %>
+  </section>
+
+  <aside class="chat-sidebar">
+    <%= turbo_frame_tag "room_stats" do %>
+      <%= render "room_stats/stats", room: @room, stats: @stats %>
+    <% end %>
+  </aside>
+</main>

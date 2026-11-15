@@ -1,2 +1,3 @@
-<h1>RoomStats#show</h1>
-<p>Find me in app/views/room_stats/show.html.erb</p>
+<%= turbo_frame_tag "room_stats" do %>
+  <%= render "room_stats/stats", room: @room, stats: @stats %>
+<% end %>

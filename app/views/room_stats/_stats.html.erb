@@ -1,0 +1,8 @@
+<h2>Room activity</h2>
+<p>Total messages: <strong><%= stats[:total_messages] %></strong></p>
+<p>Human messages: <%= stats[:human_messages] %></p>
+<p>Bot replies: <%= stats[:bot_replies] %></p>
+<p>Human display names: <%= stats[:participants] %></p>
+<p>Calculated at: <code><%= stats[:calculated_at] %></code></p>
+<p><small>Cached for 15 seconds. May temporarily lag behind live chat.</small></p>
+<%= link_to "Refresh stats", room_stats_path(room), data: { turbo_frame: "room_stats" } %>
