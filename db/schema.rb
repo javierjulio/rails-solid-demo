@@ -1,0 +1,37 @@
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# This file is the source Rails uses to define your schema when running `bin/rails
+# db:schema:load`. When creating a new database, `bin/rails db:schema:load` tends to
+# be faster and is potentially less error prone than running all of your
+# migrations from scratch. Old migrations may fail to apply correctly if those
+# migrations use external dependencies or application code.
+#
+# It's strongly recommended that you check this file into your version control system.
+
+ActiveRecord::Schema[8.1].define(version: 2026_11_15_220044) do
+  create_table "messages", force: :cascade do |t|
+    t.integer "room_id", null: false
+    t.string "author_name", null: false
+    t.text "body", null: false
+    t.string "kind", default: "human", null: false
+    t.bigint "in_reply_to_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["in_reply_to_id"], name: "index_messages_on_in_reply_to_id", unique: true
+    t.index ["room_id", "created_at", "id"], name: "index_messages_on_room_id_and_created_at_and_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_rooms_on_slug", unique: true
+  end
+
+  add_foreign_key "messages", "messages", column: "in_reply_to_id"
+  add_foreign_key "messages", "rooms"
+end
