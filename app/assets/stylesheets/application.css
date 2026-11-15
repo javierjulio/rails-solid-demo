@@ -1,10 +1,13 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+.chat-layout { display: grid; grid-template-columns: minmax(0, 3fr) minmax(220px, 1fr); gap: 2rem; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+.chat-main, .chat-sidebar { min-width: 0; }
+.chat-messages { height: 55vh; min-height: 280px; overflow-y: auto; border: 1px solid #ddd; border-radius: 10px; padding: 1rem; background: #fafafa; }
+.chat-message { padding: .6rem .8rem; margin-bottom: .65rem; background: white; border: 1px solid #e5e5e5; border-radius: 8px; }
+.chat-message--bot { border-left: 4px solid #5977c8; background: #f3f6ff; }
+.chat-message header { display: flex; flex-wrap: wrap; gap: .7rem; align-items: baseline; }
+.chat-message time, .bot-label { font-size: .8rem; opacity: .65; }
+.chat-body { margin: .35rem 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+#message_form { margin-top: 1rem; }
+#message_form label { display: block; margin: .5rem 0 .2rem; }
+#message_form input[type=text], #message_form textarea { box-sizing: border-box; width: 100%; padding: .55rem; }
+.chat-sidebar { border: 1px solid #ddd; border-radius: 10px; align-self: start; padding: 1rem; }
+@media (max-width: 720px) { .chat-layout { grid-template-columns: 1fr; } }
