@@ -1,0 +1,3 @@
+web: PORT=5000 bin/rails server
+jobs: bin/jobs
+js: npm run build -- --watch
