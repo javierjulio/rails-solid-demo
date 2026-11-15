@@ -6,5 +6,7 @@ class CreateRooms < ActiveRecord::Migration[8.1]
 
       t.timestamps
     end
+
+    add_index :rooms, :slug, unique: true
   end
 end
