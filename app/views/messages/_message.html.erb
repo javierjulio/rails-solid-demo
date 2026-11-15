@@ -1,0 +1,11 @@
+<article id="<%= dom_id(message) %>"
+         class="chat-message <%= 'chat-message--bot' if message.bot? %>">
+  <header>
+    <strong><%= message.author_name %></strong>
+    <% if message.bot? %><span class="bot-label">Bot</span><% end %>
+    <time datetime="<%= message.created_at.iso8601 %>">
+      <%= message.created_at.strftime("%H:%M:%S") %>
+    </time>
+  </header>
+  <p class="chat-body"><%= message.body %></p>
+</article>

@@ -1,0 +1,24 @@
+<div id="message_form">
+  <%= form_with(model: [room, message]) do |form| %>
+    <% if message.errors.any? %>
+      <div role="alert">
+        <strong>Message not sent:</strong>
+        <ul>
+          <% message.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :author_name, "Display name" %>
+      <%= form.text_field :author_name, maxlength: 40, required: true %>
+    </div>
+    <div>
+      <%= form.label :body, "Message" %>
+      <%= form.text_area :body, rows: 2, maxlength: 1_000, required: true %>
+    </div>
+    <%= form.submit "Send message" %>
+  <% end %>
+</div>
